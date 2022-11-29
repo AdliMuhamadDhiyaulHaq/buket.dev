@@ -56,7 +56,7 @@
                   <!-- <h3 class="text-primary text-center mt-4"><i class="fas fa-ticket"></i> BUKET APPS</h3> -->
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Masuk Kedalam Akunmu</h5>
-                    <p class="text-center small">Silahkan isi dengan teliti</p>
+                    <p class="text-center small">Silahkan isi dengan teliti OKEEH</p>
                   </div>
 
                   <form class="row g-3 needs-validation" novalidate>
