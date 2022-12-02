@@ -449,8 +449,8 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-4">
-                      <div class="card border  h-100">
+                    <div class="col-sm-4 ">
+                      <div class="card h-100 mb-4">
                         <div class="card-body">
                           <h5 class="card-title"><b>Tanggal & Waktu</b></h5>
                           <div class="col-4 ">
@@ -544,7 +544,9 @@
                             <div class="card-body">
                               <h5 class="card-title"><b>Lokasi</b></h5>
                               <button type="button" class="btn  btn-sm btn border-0" data-toggle="modal" data-target="#myModal">
-                                <i class="fas fa-location-dot"></i> <span id="text_tanggal">Pilih Lokasi</span>
+                                <i class="fas fa-location-dot"></i> <span id="text_lokasi">Pilih Lokasi</span>
+                                <input type="hidden" name="text_kategori" id="data_text_lokasi">
+                                <!-- <input type="hidden" name="jenis_acara" id="data_jenis_event"> -->
                               </button>     
                             </div>
                           </div>
@@ -565,7 +567,7 @@
                           <!-- Modal content-->
                           <div class="modal-content">
                             <div class="modal-header mb-0">
-                              <h3><b> Event <i style="font-family:cursive ;"> Offline</i> </b> </h3>
+                              <h3><b> Event Lokasi </b> </h3>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
@@ -580,16 +582,20 @@
                               <form id="form_offline">
                                 <div class="mb-3">
                                   <label for="recipient-name" class="col-form-label">Nama Tempat:</label>
-                                  <input type="text" class="form-control" id="recipient-name">
+                                  <input type="text" class="form-control" id="nama_tempat">
                                 </div>
                                 <div class="row">
                                   <div class="col-md-6 form-group">
                                     <h5 style="font-size: 14px;">Alamat</h5>
-                                    <input type="text" name="tempat_lahir" class="form-control" required>
+                                    <input type="text" name="tempat_lahir" id="alamat" class="form-control" required>
                                   </div>
                                   <div class="col-md-6 form-group mt-3 mt-md-0">
                                     <h5 style="font-size: 14px;">Kota</h5>
-                                    <input type="text" class="form-control" name="tanggal_lahir" required>
+                                    <select  id="nama_kota" class="form-select form-select" aria-label=".form-select-sm example">
+                                      <option selected value="1">Cirebon</option>
+                                      <option value="2">Kuningan</option>
+                                      <option value="2">Majalengka</option>
+                                    </select>
                                   </div>
 
 
@@ -599,14 +605,14 @@
                               <form id="form_online" class="d-none">
                                 <div class="mb-3">
                                   <label for="recipient-name" class="col-form-label">URL Streaming:</label>
-                                  <input type="text" class="form-control" id="recipient-name">
+                                  <input type="text" class="form-control" id="url_event">
                                 </div>
 
                               </form>
 
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btn-sm " data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary btn-sm lg2" data-dismiss="modal">Simpan</button>  
+                                <button type="button" class="btn btn-primary btn-sm lg2" data-dismiss="modal"  onclick="PrintData2();">Simpan</button>  
 
                               </div>
                             </div>
@@ -746,94 +752,100 @@
 
           }
         </script>
+
         <script>
-          function PrintData1() {
+          function PrintData2() {
+           var a = document.getElementById("nama_kota");
+           var avalue = a.options[a.selectedIndex].avalue;
+           var nama_kota = a.options[a.selectedIndex].text;
 
-            var tanggal_mulai = document.getElementById("tanggal_mulai").value;
-            var tanggal_selesai = document.getElementById("tanggal_selesai").value;
+
+           var nama_tempat = document.getElementById("nama_tempat").value;
+           var alamat = document.getElementById("alamat").value;
+           var url_event = document.getElementById("url_event").value;
 
 
-            var waktu_mulai = document.getElementById("waktu_mulai").value;
-            var waktu_selesai = document.getElementById("waktu_selesai").value;
 
-            document.getElementById("text_waktu").innerHTML = waktu_mulai + '   s/d ' + waktu_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
-            document.getElementById("data_text_waktu").value = waktu_mulai + '     s/d ' + waktu_selesai;
+
+           document.getElementById("text_lokasi").innerHTML = nama_tempat + ' , ' + alamat + ','+nama_kota+' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+           document.getElementById("data_text_lokasi").value = nama_tempat + ', ' + alamat;
+
+           
+
+
+
+         }
+       </script>
+       <script>
+        function PrintData1() {
+
+          var tanggal_mulai = document.getElementById("tanggal_mulai").value;
+          var tanggal_selesai = document.getElementById("tanggal_selesai").value;
+
+
+          var waktu_mulai = document.getElementById("waktu_mulai").value;
+          var waktu_selesai = document.getElementById("waktu_selesai").value;
+
+          document.getElementById("text_waktu").innerHTML = waktu_mulai + '   s/d ' + waktu_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+          document.getElementById("data_text_waktu").value = waktu_mulai + '     s/d ' + waktu_selesai;
       // alert(tanggal_selesai);
 
 
       // document.getElementById("data_jenis_event").value = isi_jenis_event;
-            document.getElementById("text_tanggal").innerHTML = tanggal_mulai + '   s/d ' + tanggal_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
-            document.getElementById("data_text_tanggal").value = tanggal_mulai + '     s/d ' + tanggal_selesai;
+          document.getElementById("text_tanggal").innerHTML = tanggal_mulai + '   s/d ' + tanggal_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+          document.getElementById("data_text_tanggal").value = tanggal_mulai + '     s/d ' + tanggal_selesai;
 
 
-          }
-        </script>
-        <!-- Vendor JS Files -->
-        <script src="../../assets/vendor/apexcharts/apexcharts.min.js"></script>
-        <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="../../assets/vendor/chart.js/chart.min.js"></script>
-        <script src="../../assets/vendor/echarts/echarts.min.js"></script>
-        <script src="../../assets/vendor/quill/quill.min.js"></script>
-        <script src="../../assets/vendor/simple-datatables/simple-datatables.js"></script>
-        <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
-        <script src="../../assets/vendor/php-email-form/validate.js"></script>
+        }
 
-        <!-- Template Main JS File -->
-        <script src="../../assets/js/main.js"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+        function BtnStepNext() {
+          document.getElementById("next-btn-modal").classList.add("d-none");
+          document.getElementById("step-1").classList.add("d-none");
+          document.getElementById("nav-step-2").classList.add("active");
+          document.getElementById("prev-btn-modal").classList.remove("d-none");;
+          document.getElementById("step-2").classList.remove("d-none");;
+          document.getElementById("nav-step-1").classList.remove("active");
+          document.getElementById("progress-bar").style.width = "100%";
 
-        <script>
-          function BtnStepNext() {
-            document.getElementById("next-btn-modal").classList.add("d-none");
-            document.getElementById("step-1").classList.add("d-none");
-            document.getElementById("nav-step-2").classList.add("active");
-            document.getElementById("prev-btn-modal").classList.remove("d-none");;
-            document.getElementById("step-2").classList.remove("d-none");;
-            document.getElementById("nav-step-1").classList.remove("active");
-            document.getElementById("progress-bar").style.width = "100%";
+        }
 
-          }
+        function BtnStepPrev() {
+          document.getElementById("prev-btn-modal").classList.add("d-none");
+          document.getElementById("step-2").classList.add("d-none");
+          document.getElementById("nav-step-1").classList.add("active");
+          document.getElementById("next-btn-modal").classList.remove("d-none");;
+          document.getElementById("step-1").classList.remove("d-none");;
+          document.getElementById("nav-step-2").classList.remove("active");
+          document.getElementById("progress-bar").style.width = "50%";
+        }
+      </script>
 
-          function BtnStepPrev() {
-            document.getElementById("prev-btn-modal").classList.add("d-none");
-            document.getElementById("step-2").classList.add("d-none");
-            document.getElementById("nav-step-1").classList.add("active");
-            document.getElementById("next-btn-modal").classList.remove("d-none");;
-            document.getElementById("step-1").classList.remove("d-none");;
-            document.getElementById("nav-step-2").classList.remove("active");
-            document.getElementById("progress-bar").style.width = "50%";
-          }
-        </script>
-
-        <script>
-          function CekEvent() {
-            var e = document.getElementById("cek_event");
-            var value = e.value;
-            var text = e.options[e.selectedIndex].text;
-            if (text == 'ONLINE') {
+      <script>
+        function CekEvent() {
+          var e = document.getElementById("cek_event");
+          var value = e.value;
+          var text = e.options[e.selectedIndex].text;
+          if (text == 'ONLINE') {
                                       // alert(text);
-              document.getElementById("form_offline").classList.add("d-none");
-              document.getElementById("form_online").classList.remove("d-none");
-            } else {
-              document.getElementById("form_online").classList.add("d-none");
-              document.getElementById("form_offline").classList.remove("d-none");
+            document.getElementById("form_offline").classList.add("d-none");
+            document.getElementById("form_online").classList.remove("d-none");
+          } else {
+            document.getElementById("form_online").classList.add("d-none");
+            document.getElementById("form_offline").classList.remove("d-none");
                                       // alert(0);
-            }
-
           }
-        </script>
-        
 
-        <script type="text/javascript">
-          $(function() {
+        }
+      </script>
+
+
+      <script type="text/javascript">
+        $(function() {
       // Step show event
 
       // Smart Wizard
-            $('#smartwizard').smartWizard({
-              selected: 0,
+          $('#smartwizard').smartWizard({
+            selected: 0,
         // autoAdjustHeight: false,
         theme: 'arrows', // basic, arrows, square, round, dots
         transition: {
@@ -858,8 +870,27 @@
       });
 
 
-          });
-        </script>
+        });
+      </script>
+    </script>
+    <!-- Vendor JS Files -->
+    <script src="../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/vendor/chart.js/chart.min.js"></script>
+    <script src="../../assets/vendor/echarts/echarts.min.js"></script>
+    <script src="../../assets/vendor/quill/quill.min.js"></script>
+    <script src="../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../../assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="../../assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+
+    <script>
 
       </body>
 
