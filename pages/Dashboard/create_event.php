@@ -1,3 +1,4 @@
+@@ -1,866 +1,867 @@
 <!DOCTYPE html>
 <html lang="en">
 
@@ -449,8 +450,8 @@
                       </div>
                     </div>
 
-                    <div class="col-sm-4 ">
-                      <div class="card h-100 mb-4">
+                    <div class="col-sm-4">
+                      <div class="card border  h-100">
                         <div class="card-body">
                           <h5 class="card-title"><b>Tanggal & Waktu</b></h5>
                           <div class="col-4 ">
@@ -545,7 +546,7 @@
                               <h5 class="card-title"><b>Lokasi</b></h5>
                               <button type="button" class="btn  btn-sm btn border-0" data-toggle="modal" data-target="#myModal">
                                 <i class="fas fa-location-dot"></i> <span id="text_lokasi">Pilih Lokasi</span>
-                                <input type="hidden" name="text_kategori" id="data_text_lokasi">
+                                <input type="hidden" name="text_lokasi" id="data_text_lokasi">
                                 <!-- <input type="hidden" name="jenis_acara" id="data_jenis_event"> -->
                               </button>     
                             </div>
@@ -567,7 +568,7 @@
                           <!-- Modal content-->
                           <div class="modal-content">
                             <div class="modal-header mb-0">
-                              <h3><b> Event Lokasi </b> </h3>
+                              <h3><b> Event Lokasi</i> </b> </h3>
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
                             </div>
                             <div class="modal-body">
@@ -587,12 +588,13 @@
                                 <div class="row">
                                   <div class="col-md-6 form-group">
                                     <h5 style="font-size: 14px;">Alamat</h5>
-                                    <input type="text" name="tempat_lahir" id="alamat" class="form-control" required>
+                                    <input type="text" name="alamat" id="alamat" class="form-control" required>
                                   </div>
                                   <div class="col-md-6 form-group mt-3 mt-md-0">
                                     <h5 style="font-size: 14px;">Kota</h5>
                                     <select  id="nama_kota" class="form-select form-select" aria-label=".form-select-sm example">
-                                      <option selected value="1">Cirebon</option>
+                                      <option selected value="1">--Pilih Kota--</option>
+                                      <option value="2">Cirebon</option>
                                       <option value="2">Kuningan</option>
                                       <option value="2">Majalengka</option>
                                     </select>
@@ -752,6 +754,28 @@
 
           }
         </script>
+        <script>
+          function PrintData1() {
+
+            var tanggal_mulai = document.getElementById("tanggal_mulai").value;
+            var tanggal_selesai = document.getElementById("tanggal_selesai").value;
+
+
+            var waktu_mulai = document.getElementById("waktu_mulai").value;
+            var waktu_selesai = document.getElementById("waktu_selesai").value;
+
+            document.getElementById("text_waktu").innerHTML = waktu_mulai + '   s/d ' + waktu_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+            document.getElementById("data_text_waktu").value = waktu_mulai + '     s/d ' + waktu_selesai;
+      // alert(tanggal_selesai);
+
+
+      // document.getElementById("data_jenis_event").value = isi_jenis_event;
+            document.getElementById("text_tanggal").innerHTML = tanggal_mulai + '   s/d ' + tanggal_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+            document.getElementById("data_text_tanggal").value = tanggal_mulai + '     s/d ' + tanggal_selesai;
+
+
+          }
+        </script>
 
         <script>
           function PrintData2() {
@@ -776,28 +800,26 @@
 
          }
        </script>
+
+
+       <!-- Vendor JS Files -->
+       <script src="../../assets/vendor/apexcharts/apexcharts.min.js"></script>
+       <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+       <script src="../../assets/vendor/chart.js/chart.min.js"></script>
+       <script src="../../assets/vendor/echarts/echarts.min.js"></script>
+       <script src="../../assets/vendor/quill/quill.min.js"></script>
+       <script src="../../assets/vendor/simple-datatables/simple-datatables.js"></script>
+       <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
+       <script src="../../assets/vendor/php-email-form/validate.js"></script>
+
+       <!-- Template Main JS File -->
+       <script src="../../assets/js/main.js"></script>
+       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+
        <script>
-        function PrintData1() {
-
-          var tanggal_mulai = document.getElementById("tanggal_mulai").value;
-          var tanggal_selesai = document.getElementById("tanggal_selesai").value;
-
-
-          var waktu_mulai = document.getElementById("waktu_mulai").value;
-          var waktu_selesai = document.getElementById("waktu_selesai").value;
-
-          document.getElementById("text_waktu").innerHTML = waktu_mulai + '   s/d ' + waktu_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
-          document.getElementById("data_text_waktu").value = waktu_mulai + '     s/d ' + waktu_selesai;
-      // alert(tanggal_selesai);
-
-
-      // document.getElementById("data_jenis_event").value = isi_jenis_event;
-          document.getElementById("text_tanggal").innerHTML = tanggal_mulai + '   s/d ' + tanggal_selesai + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
-          document.getElementById("data_text_tanggal").value = tanggal_mulai + '     s/d ' + tanggal_selesai;
-
-
-        }
-
         function BtnStepNext() {
           document.getElementById("next-btn-modal").classList.add("d-none");
           document.getElementById("step-1").classList.add("d-none");
@@ -872,26 +894,7 @@
 
         });
       </script>
-    </script>
-    <!-- Vendor JS Files -->
-    <script src="../../assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="../../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/vendor/chart.js/chart.min.js"></script>
-    <script src="../../assets/vendor/echarts/echarts.min.js"></script>
-    <script src="../../assets/vendor/quill/quill.min.js"></script>
-    <script src="../../assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="../../assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="../../assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="../../assets/js/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+    </body>
 
-    <script>
-
-      </body>
-
-      </html>
+    </html>
