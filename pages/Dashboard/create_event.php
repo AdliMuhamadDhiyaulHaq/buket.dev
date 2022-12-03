@@ -309,7 +309,7 @@
               <ul class="nav nav-tabs nav-tabs-bordered">
 
                 <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
+                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Langkah 1</button>
                 </li>
 
                 <li class="nav-item">
@@ -524,7 +524,8 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                      <!-- <button class="btn btn-secondary btn-sm" onclick="onCancel()">Cancel</button> -->
+                                      <button type="button" class="btn btn-secondary btn-sm"data-bs-dismiss="modal">Batal</button>
+
                                       <span id="btn-step">
                                         <a class="btn btn-primary btn-sm text-light d-none" id="prev-btn-modal" onclick="BtnStepPrev();">Previous</a>
                                         <a class="btn btn-primary btn-sm text-light" id="next-btn-modal" onclick="BtnStepNext();">Selanjutnya</a>
@@ -547,8 +548,8 @@
                               <button type="button" class="btn  btn-sm btn border-0" data-toggle="modal" data-target="#myModal">
                                 <i class="fas fa-location-dot"></i> <span id="text_lokasi">Pilih Lokasi</span>
                                 <input type="hidden" name="text_lokasi" id="data_text_lokasi">
-                                <!-- <input type="hidden" name="jenis_acara" id="data_jenis_event"> -->
                               </button>     
+                              <input type="hidden" name="text_lokasi_online" id="data_lokasi_online">
                             </div>
                           </div>
                         </div>
@@ -622,9 +623,9 @@
 
                         </div>
                       </div>
-                      <!-- <div class="text-center">
+                      <div class="text-center">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                      </div> -->
+                      </div>
                     </form>
                   </div>
                 </div>
@@ -783,6 +784,11 @@
            var avalue = a.options[a.selectedIndex].avalue;
            var nama_kota = a.options[a.selectedIndex].text;
 
+           var b = document.getElementById("cek_event");
+           var bvalue = b.options[b.selectedIndex].bvalue;
+           var cek_event = b.options[b.selectedIndex].text;
+
+
 
            var nama_tempat = document.getElementById("nama_tempat").value;
            var alamat = document.getElementById("alamat").value;
@@ -791,8 +797,15 @@
 
 
 
-           document.getElementById("text_lokasi").innerHTML = nama_tempat + ' , ' + alamat + ','+nama_kota+' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+           document.getElementById("text_lokasi").innerHTML =  nama_tempat + ' , ' + alamat + ','+nama_kota+' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
            document.getElementById("data_text_lokasi").value = nama_tempat + ', ' + alamat;
+
+
+           // document.getElementById("text_lokasi_online").innerHTML = cek_event+'URL EVENT:'+url_event + ' <i  class="fa-regular fa-pen-to-square text-primary"></i>';
+           // document.getElementById("data_lokasi_online").value = cek_event + ', ' + url_event;
+
+
+
 
            
 
